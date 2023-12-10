@@ -1,4 +1,5 @@
 const express =require('express');
+const fs = require('fs')
 const mysql=require('mysql2');
 const inquirer=require('inquirer');
 // import and require inquirer, mysql, and express
@@ -63,6 +64,8 @@ inquirer
         if (err) throw err;
         console.table(res);
         // shows the response
+        fs.appendFileSync('.db/seeds.sql', res)
+        // adds user input into the table
     })
     }
 
