@@ -12,7 +12,7 @@ VALUES ("Manager", 24.99),
 ("Developer", 21.23),
 ("Marketer", 20.21);
 
-INSERT INTO employee(first_name, last_name)
+INSERT INTO employee (first_name, last_name)
 VALUES ("Johnny", "Cash"),
 ("Jim", "Morrison"),
 ("Janis", "Joplin"),

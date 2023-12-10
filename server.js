@@ -1,5 +1,5 @@
 const express =require('express');
-const mysql=requier('mysql2');
+const mysql=require('mysql2');
 const inquirer=require('inquirer');
 // import and require inquirer, mysql, and express
 const app=express();
@@ -13,7 +13,7 @@ const db=mysql.createConnection(
     {
        host: 'localhost',
        user: 'root',
-       password: 'password',
+       password: 'steviegirl1!',
        database: 'company_db'
     },
     console.log(`Connected to company_db.`)
@@ -27,5 +27,8 @@ inquirer
             name:'action',
             choices: ['Add Employee', 'Update Employee Role', 'View All Roles', 'Add Role', 'View All Departments', 'Add Department', 'Quit']
         },
-        
     ])
+    
+    .then((action) =>{
+        
+    }) 
