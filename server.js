@@ -55,7 +55,7 @@ function start() {
                     break;
                 case "Update Employee Role":
                     updateEmployeeRole();
-                    break;    
+                    break;
                 case "Quit":
                     quit();
                     break;
@@ -84,6 +84,7 @@ function viewDepartment() {
         console.table(res);
         // shows the response
     })
+    start();
 }
 
 function viewRoles() {
@@ -94,6 +95,7 @@ function viewRoles() {
         console.table(res);
         // show the response
     })
+    start();
 }
 
 function addDepartment() {
@@ -104,19 +106,19 @@ function addDepartment() {
             name: 'departmentName'
         },
         {
-            type:'input',
-            message:'What is the new departments ID number?',
-            name:'deptID'
+            type: 'input',
+            message: 'What is the new departments ID number?',
+            name: 'deptID'
         }
     ])
-    .then(function(answer =>{
-        db.query('INSERT INTO department SET ?;', {
-            id:answer.deptID,
-            name:answer.departmentName
+        .then(function (answer) {
+            db.query('INSERT INTO department SET ?;', {
+                id: answer.deptID,
+                name: answer.departmentName
+            })
+            start();
         })
-        start();
-    })
-    )
+
 }
 function addRole() {
     inquirer.prompt([
@@ -177,9 +179,15 @@ function addEmployee() {
             name: 'manager'
         }
     ])
-    .then(answer =>{
-        db.query('INSERT INTO employees SET ?;', )
-    })
+        .then(function(answer) {
+            db.query('INSERT INTO employee SET ?;', {
+                first_name: answer.firstName,
+                last_name: answer.lastName,
+                role_id: answer.employeeRole,
+                manager_id: answer.manager
+            })
+            start();
+        })
 }
 function updateEmployeeRole() {
     inquirer.prompt([
@@ -197,7 +205,7 @@ function updateEmployeeRole() {
         .then(answer => {
             db.query('UPDATE roles SET ? WHERE ? ;', [
                 {
-                    title: answer.newRole
+                    role_id: answer.newRole
 
                 },
                 {
@@ -205,8 +213,7 @@ function updateEmployeeRole() {
                 }
             ])
             start();
-        }
-        )
+        })
 }
 function quit() {
     start();
