@@ -102,8 +102,21 @@ function addDepartment() {
             type: 'input',
             message: 'What is the name of the department?',
             name: 'departmentName'
+        },
+        {
+            type:'input',
+            message:'What is the new departments ID number?',
+            name:'deptID'
         }
     ])
+    .then(function(answer =>{
+        db.query('INSERT INTO department SET ?;', {
+            id:answer.deptID,
+            name:answer.departmentName
+        })
+        start();
+    })
+    )
 }
 function addRole() {
     inquirer.prompt([
@@ -138,6 +151,7 @@ function addRole() {
                 department_id: answer.roleDept
 
             })
+            start();
         })
 }
 function addEmployee() {
@@ -153,18 +167,19 @@ function addEmployee() {
             name: 'lastName'
         },
         {
-            type: 'list',
-            message: 'What is the employees role?',
-            choices: ['Manager', 'Salesperson', 'Recruiter', 'Developer', 'Marketer'],
+            type: 'input',
+            message: 'What is the role ID of this new employee?',
             name: 'employeeRole'
         },
         {
-            type: 'list',
-            message: 'Who is this employees manager?',
-            choices: ['manager', 'manager', 'manager'],
+            type: 'input',
+            message: 'What is the ID for this employees manager?',
             name: 'manager'
         }
     ])
+    .then(answer =>{
+        db.query('INSERT INTO employees SET ?;', )
+    })
 }
 function updateEmployeeRole() {
     inquirer.prompt([
