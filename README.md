@@ -4,6 +4,7 @@
 
 I created this application to make it simple to keep track of core company information. This application tracks basic employee information relative to the company, and helps track all of the different departments and role within the compant.
 
+Check out this video to see what is does: https://drive.google.com/file/d/1ge4TZTvvlFZj7cUUXqIct05TLb8q9mck/view
 
 ## Installation
 To use this application, run npm install to ensure all necessary dependencies are installed. Once that is complete, run 'node server.js' to open the program. Users can use the arrow keys to choose what they want to do, and follow the prompts to enter or view any information.
